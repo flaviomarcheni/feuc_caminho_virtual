@@ -2,7 +2,7 @@ var panorama;
 var entryPanoId = null;
 var APP =  new Object();
 APP.copyright = 'FEUC (c) 2014';
-APP.panoInicial = 'sala';
+APP.panoInicial = 'entrada_1';
 var latBase = -22.898633;
 var lonBase = -43.554502;
 
