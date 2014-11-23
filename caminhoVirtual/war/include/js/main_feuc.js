@@ -89,8 +89,9 @@ var stage = document.getElementById('map-canvas');
         map : map,
         position : Latlng,
         draggable : false
+       
       });    
-    
+    console.log(marker.icon)
     google.maps.event.addListener(marker, 'click', function () {
         panorama.setOptions(panoOptions2);
     });
@@ -332,7 +333,6 @@ function createCustomLinks(entryPanoId) {
   
    
     case "entrada_1":
-      OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:started-map")
       links.push({
         description : "Venha conhecer a FEUC",
         pano : "entrada_2",
@@ -342,36 +342,34 @@ function createCustomLinks(entryPanoId) {
 
 
     case "entrada_2":
-    OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
       links.push({//frente
-        description : "",
+        description : "Cantina",
         pano : "entrada_3",
         heading : 0
       });
 
       links.push({
-        description : "",
+        description : "Voltar",
         pano : "entrada_1",
         heading : 180  //trás
       });
       
       links.push({//direita
-          description : "",
+          description : "Escada",
           pano : "entrada_5",
           heading : 58
         });
       break;
 
     case "entrada_3":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
-            description : "",
+            description : "Sala dos professores",
             pano : "entrada_4",
             heading : 0
           });
 
           links.push({
-            description : "",
+            description : "Voltar",
             pano : "entrada_2",
             heading : 180  //trás
           });
@@ -380,64 +378,62 @@ function createCustomLinks(entryPanoId) {
           
     case "entrada_4":
           links.push({
-            description : "",
+            description : "Voltar",
             pano : "entrada_3",
             heading : 180  //trás
           });
           break;
           
     case "entrada_5":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
-            description : "",
+            description : "Subir",
             pano : "escada",
             heading : 0
           });
 
           links.push({
-            description : "",
+            description : "Voltar",
             pano : "entrada_2",
-            heading : 270  //direita
+            heading : 270  //esquerda
           });
           break;
     case "escada":
         OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
-            description : "",
+            description : "Subir",
             pano : "corredor_centro",
             heading : 0
           });
 
           links.push({
-            description : "",
+            description : "Voltar",
             pano : "entrada_5",
             heading : 65  //direita
           });
           break;
           
     case "corredor_centro":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
-            description : "",
+            description : "Final do corredor",
             pano : "corredor_direita",
             heading : 0
           });
 
           links.push({
-            description : "",
+            description : "Voltar",
             pano : "escada",
             heading : 100  //direita
           });
           
           links.push({
-              description : "",
+              description : "Início do corredor",
               pano : "corredor_esquerda",
               heading : 180  //trás
             });
           
           
           links.push({
-              description : "",
+              description : "Entrar no Lab D",
               pano : "sala",
               heading : 310  //trás
             });
@@ -446,7 +442,7 @@ function createCustomLinks(entryPanoId) {
     case "corredor_esquerda":
         OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
-            description : "",
+            description : "Voltar",
             pano : "corredor_centro",
             heading : 0
           });
@@ -455,7 +451,7 @@ function createCustomLinks(entryPanoId) {
     case "corredor_direita":
         OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//trás
-            description : "",
+            description : "Voltar",
             pano : "corredor_centro",
             heading : 210
           });
@@ -464,7 +460,7 @@ function createCustomLinks(entryPanoId) {
     case "sala":
         OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//trás
-            description : "",
+            description : "Voltar",
             pano : "corredor_centro",
             heading : 40
           });

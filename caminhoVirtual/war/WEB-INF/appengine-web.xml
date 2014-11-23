@@ -7,8 +7,10 @@
 	
 	<static-files>
 		  <include path="/include/**" >
-		  
 		  </include>
+	</static-files>
+	<static-files>
+  		<include path="/favicon.ico" />
 	</static-files>
 
 	<system-properties>

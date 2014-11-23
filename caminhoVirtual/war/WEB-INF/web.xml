@@ -3,103 +3,20 @@
 	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
+	
+	
 
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-
-	<servlet>
-		<servlet-name>SystemServiceServlet</servlet-name>
-		<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
-		<init-param>
-			<param-name>services</param-name>
-			<param-value />
-		</init-param>
-	</servlet>
-
-
-	<servlet-mapping>
-		<servlet-name>SystemServiceServlet</servlet-name>
-		<url-pattern>/_ah/spi/*</url-pattern>
-	</servlet-mapping>
+ 	<servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>br.com.fmarcheni.feuc.controller.IndexController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
 
 
 
-	<!-- <security-constraint> -->
-	<!-- <web-resource-collection> -->
-	<!-- <url-pattern>/*</url-pattern> -->
-	<!-- </web-resource-collection> -->
-	<!-- <user-data-constraint> -->
-	<!-- <transport-guarantee>CONFIDENTIAL</transport-guarantee> -->
-	<!-- </user-data-constraint> -->
-	<!-- </security-constraint> -->
-	<servlet>
-		<display-name>Remote API Servlet</display-name>
-		<servlet-name>RemoteApiServlet</servlet-name>
-		<servlet-class>com.google.apphosting.utils.remoteapi.RemoteApiServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RemoteApiServlet</servlet-name>
-		<url-pattern>/remote_api</url-pattern>
-	</servlet-mapping>
-
-
-
-
-	<servlet>
-		<servlet-name>context</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>context</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-
-
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/context-servlet.xml</param-value>
-	</context-param>
-
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<session-config>
-		<session-timeout>15</session-timeout>
-	</session-config>
-
-<!-- 	<security-constraint> -->
-<!--         <web-resource-collection> -->
-<!--         <web-resource-name>/</web-resource-name> -->
-<!--             <url-pattern>/*</url-pattern> -->
-<!--         </web-resource-collection> -->
-<!--         <user-data-constraint> -->
-<!--             <transport-guarantee>CONFIDENTIAL</transport-guarantee> -->
-<!--         </user-data-constraint> -->
-<!--     </security-constraint> -->
 
 </web-app>
