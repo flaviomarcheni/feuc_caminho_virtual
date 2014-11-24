@@ -398,7 +398,6 @@ function createCustomLinks(entryPanoId) {
           });
           break;
     case "escada":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
             description : "Subir",
             pano : "corredor_centro",
@@ -440,7 +439,6 @@ function createCustomLinks(entryPanoId) {
           break;
 
     case "corredor_esquerda":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//frente
             description : "Voltar",
             pano : "corredor_centro",
@@ -449,7 +447,6 @@ function createCustomLinks(entryPanoId) {
         break;
        
     case "corredor_direita":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//trás
             description : "Voltar",
             pano : "corredor_centro",
@@ -458,7 +455,6 @@ function createCustomLinks(entryPanoId) {
         break;
     
     case "sala":
-        OmnitureChamada("ch:la:BR:pt:index:chevrolet-world:streetview:center-design")
           links.push({//trás
             description : "Voltar",
             pano : "corredor_centro",
