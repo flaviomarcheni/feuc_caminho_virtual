@@ -5,15 +5,18 @@ APP.copyright = 'FEUC (c) 2014';
 APP.panoInicial = 'entrada_1';
 var latBase = -22.898633;
 var lonBase = -43.554502;
-
+	
+  //Corresponde ao tamanho do  imagem em largura
   var  worldSizeX = 9728;
+//Corresponde ao tamanho do  imagem em altura
   var  worldSizeY = 4864;
 
+  //Corresponde de cada  tile em largura
   var tileSizeX  = 9728;
+  //Corresponde de cada  tile em altura
   var tileSizeY = 4864;
  
   
-/* Array of possible browser specific settings for transformation */
   var properties = ['transform', 'WebkitTransform', 'MozTransform', 'msTransform', 'OTransform'];
   var prop = properties[0];
 
@@ -26,7 +29,6 @@ function testeLog(status){
   if (status == "n"){
     document.getElementById('portaoFEUC').style.display = "none";
   }else{
-    testeLog("n")
     document.getElementById(status).style.display = "block";
   }
 }
@@ -79,23 +81,27 @@ var stage = document.getElementById('map-canvas');
     var mapDiv = document.getElementById('map-canvas');
     var Latlng = new google.maps.LatLng( latBase, lonBase );
 
+    //adiciona a instancia do mapa no DOM
     var map = new google.maps.Map(mapDiv, {
         center: Latlng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP
        });
 
+    //Adiciona o marcador no mapa
     var marker = new google.maps.Marker({
         map : map,
         position : Latlng,
         draggable : false
        
       });    
-    console.log(marker.icon)
+    
+    // Ao clicar no marker abre o steetView
     google.maps.event.addListener(marker, 'click', function () {
         panorama.setOptions(panoOptions2);
     });
 
+    	// Cria a instancia do StreetView
       panorama = map.getStreetView();
         var panoOptions2 = {
           pov: {
@@ -133,25 +139,20 @@ var stage = document.getElementById('map-canvas');
       });
 	  
 	  
-	  // LIMITAR ZOOM
-//-----------------------------------------------------
 
 
-google.maps.event.addListener(panorama, 'pano_changed', function() {
- setTimeout( function () { map.getStreetView().setZoom(0); } );
-});
 }
-// Return a pano image given the panoID.
+// Return a  pano image given the panoID.
+//Toda vez que é feita a troca de imagens na navegação, este método é chamado e retorna a imagem de acordo com o nome do pano
 function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
-  console.log(img);
   var img = "/include/images/feuc/" + pano + '.jpg';
-	
- return img;
-//  return 'images/centro-design/'+pano+'-'+zoom+'-'+tileY+'-'+tileX+'_s1.jpg';
+  return img;
 }
 
 // Construct the appropriate StreetViewPanoramaData given
 // the passed pano IDs.
+// Definição de cada pano
+// Pano leia-se imgens usados no caminho virtual.
 function getCustomPanorama(pano, zoom, tileX, tileY) {
   switch(pano){
    
@@ -189,7 +190,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
       };
       
      case "entrada_3":
-         //testeLog("n")
          return {
            location: {
              pano: 'entrada_3',
@@ -317,14 +317,13 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
 
 
 
+//Função reponsável por adicionar os controles de navegação em cada imagem de acordo com o nome do pano.
 function createCustomLinks(entryPanoId) {
   /*
    * add links
    */
   var links = panorama.getLinks();
   var panoID = panorama.getPano();
-  
-
   // frente 0
   // lado esquerdo 270
   // lado direito 90
