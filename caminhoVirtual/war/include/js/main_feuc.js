@@ -1,16 +1,14 @@
 var panorama;
-var entryPanoId = null;
 var APP =  new Object();
 APP.copyright = 'FEUC (c) 2014';
 APP.panoInicial = 'entrada_1';
 var latBase = -22.898633;
 var lonBase = -43.554502;
 	
-  //Corresponde ao tamanho do  imagem em largura
+  //Corresponde ao tamanho da  imagem em largura
   var  worldSizeX = 9728;
-//Corresponde ao tamanho do  imagem em altura
+//Corresponde ao tamanho 	da  imagem em altura
   var  worldSizeY = 4864;
-
   //Corresponde de cada  tile em largura
   var tileSizeX  = 9728;
   //Corresponde de cada  tile em altura
@@ -22,49 +20,6 @@ var lonBase = -43.554502;
 
 /* Iterators and stuff */    
   var i,j,t;
-
-
-
-function testeLog(status){
-  if (status == "n"){
-    document.getElementById('portaoFEUC').style.display = "none";
-  }else{
-    document.getElementById(status).style.display = "block";
-  }
-}
-
-function OmnitureChamada(pano_nome){
-  if(pano_nome == "block"){
-    return
-  }
-
-  if(typeof(Omniture_s) != "undefined"){
-    Omniture_s.server = window.location.hostname;
-
-    Omniture_s.channel = "google-street-view";
-   
-    Omniture_s.eVar18 = "Chevrolet";
-   
-    Omniture_s.eVar31 = "brazil";
-   
-    Omniture_s.eVar32 = "lat-am";
-   
-    Omniture_s.eVar4 = "pt";
-   
-    Omniture_s.hier1 = "google-street-view";
-   
-    Omniture_s.pageName = pano_nome;
-
-    Omniture_s.prop18 = "Chevrolet";
-   
-    Omniture_s.prop23 = "pt";
-
-  }
-
-  if(typeof(Omniture_s) != "undefined"){
-    var s_code=Omniture_s.t();if(s_code)document.write(s_code)
-  }
-}
 
 
 function initialize() {
@@ -142,28 +97,23 @@ var stage = document.getElementById('map-canvas');
 
 
 }
-// Return a  pano image given the panoID.
+
 //Toda vez que é feita a troca de imagens na navegação, este método é chamado e retorna a imagem de acordo com o nome do pano
 function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
   var img = "/include/images/feuc/" + pano + '.jpg';
   return img;
 }
-
-// Construct the appropriate StreetViewPanoramaData given
-// the passed pano IDs.
 // Definição de cada pano
 // Pano leia-se imgens usados no caminho virtual.
 function getCustomPanorama(pano, zoom, tileX, tileY) {
   switch(pano){
    
- 
 	 case "entrada_1":
       return {
         location: {
           pano: 'entrada_1',
           description: 'Entrada'
         },
-        links: [],
         copyright: APP.copyright,
         tiles: {
           tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -179,7 +129,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
           pano: 'entrada_2',
           description: 'Pátio'
         },
-        links: [],
         copyright: APP.copyright,
         tiles: {
           tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -195,7 +144,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'entrada_3',
              description: 'Lanchonete'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -211,7 +159,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'entrada_4',
              description: 'Sala dos professores'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -226,7 +173,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'entrada_5',
              description: 'Elevador | Escada'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -241,7 +187,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'escada',
              description: 'Escada'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -256,7 +201,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'corredor_centro',
              description: 'CORREDOR | ESCADA'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -271,7 +215,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
              pano: 'corredor_esquerda',
              description: 'CORREDOR | ESQUERDA'
            },
-           links: [],
            copyright: APP.copyright,
            tiles: {
              tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -287,7 +230,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
               pano: 'corredor_direita',
               description: 'CORREDOR | DIREITA'
             },
-            links: [],
             copyright: APP.copyright,
             tiles: {
               tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -302,7 +244,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
               pano: 'sala',
               description: 'SALA'
             },
-            links: [],
             copyright: APP.copyright,
             tiles: {
               tileSize: new google.maps.Size(tileSizeX, tileSizeY),
@@ -319,9 +260,6 @@ function getCustomPanorama(pano, zoom, tileX, tileY) {
 
 //Função reponsável por adicionar os controles de navegação em cada imagem de acordo com o nome do pano.
 function createCustomLinks(entryPanoId) {
-  /*
-   * add links
-   */
   var links = panorama.getLinks();
   var panoID = panorama.getPano();
   // frente 0
@@ -329,8 +267,6 @@ function createCustomLinks(entryPanoId) {
   // lado direito 90
   // baixo 180
   switch(panoID) {
-  
-   
     case "entrada_1":
       links.push({
         description : "Venha conhecer a FEUC",
@@ -338,15 +274,12 @@ function createCustomLinks(entryPanoId) {
         heading : 0
       });
       break;
-
-
     case "entrada_2":
       links.push({//frente
         description : "Cantina",
         pano : "entrada_3",
         heading : 0
       });
-
       links.push({
         description : "Voltar",
         pano : "entrada_1",
@@ -359,7 +292,6 @@ function createCustomLinks(entryPanoId) {
           heading : 58
         });
       break;
-
     case "entrada_3":
           links.push({//frente
             description : "Sala dos professores",

@@ -46,17 +46,7 @@ html, body {
 }
 
 </style>
-	
-	
-    <script type="text/javascript">
-<!--
-	var s_account="gmbrcore";
-	
-// -->
-	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/include/js/brazil.s_code.js"></script>
 	<script src="/include/js/main_feuc.js"></script>
 	<script>
 		google.maps.event.addDomListener(window, 'load', initialize);
@@ -66,8 +56,5 @@ html, body {
   </head>
   <body>
     <div id="map-canvas"></div>
-    <div id="portaoFEUC" style="width: 205px; height: 100px; margin-top: -102px; position: relative; margin-left: 65px; font-weight: bold; display: none; z-index: 2147483647; font-family: Arial, serif; color: #FFF;" onclick="clickIrParaGravatai()">
-      Clique Aqui<br>Visite a linha de montagem em Gravatai - RS
-    </div>
   </body>
 </html>
