@@ -12,4 +12,7 @@ Plugin Google AppEngine:
 https://developers.google.com/eclipse/docs/getting_started
 
 
+API Javascript do Google Maps v3:
+https://developers.google.com/maps/documentation/javascript/
+
 
